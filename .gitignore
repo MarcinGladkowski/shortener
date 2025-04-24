@@ -1,0 +1,6 @@
+# deependencies
+vendor/
+# symfony meta files
+var/
+# IDE
+.idea/
