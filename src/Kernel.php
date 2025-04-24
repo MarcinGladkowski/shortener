@@ -21,6 +21,8 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerConfigurator $container): void
     {
+        $container->import(__DIR__.'/../config/framework.yaml');
+
         // register all classes in /src/ as service
         $container->services()
             ->load('App\\', __DIR__.'/*')
