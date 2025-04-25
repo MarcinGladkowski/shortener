@@ -10,7 +10,7 @@ class MicroControllerTest extends WebTestCase
 {
     public function testDummyEndpoint(): void
     {
-        $client = static::createClient();
+        $client = static::createClient(['KERNEL_CLASS' => 'App\Kernel']);
 
         $client->request('GET', '/random/10');
 
