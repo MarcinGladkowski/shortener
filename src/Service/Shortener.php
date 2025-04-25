@@ -6,9 +6,13 @@ namespace App\Service;
 
 final readonly class Shortener implements UrlShortenerInterface
 {
+    public function __construct(
+        private ShortenerAlgorithmInterface $shortenerAlgorithm,
+    ) {
+    }
 
     public function generate(string $url): string
     {
-        return 'test';
+        return $this->shortenerAlgorithm->hash($url);
     }
 }
