@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -33,7 +34,7 @@ class ShortenerControllerTest extends WebTestCase
                 content: json_encode(['value' => 'test'], JSON_THROW_ON_ERROR)
             );
 
-        $jsonResponse = json_decode($client->getResponse()->getContent(), true, 512, JSON_THROW_ON_ERROR);
+        $jsonResponse = $this->decodeJsonResponse($client);
 
         self::assertResponseIsSuccessful();
         self::assertArrayHasKey('value', $jsonResponse);
@@ -53,9 +54,19 @@ class ShortenerControllerTest extends WebTestCase
                 content: json_encode(['value' => 'test'], JSON_THROW_ON_ERROR)
             );
 
-        $jsonResponse = json_decode($client->getResponse()->getContent(), true, 512, JSON_THROW_ON_ERROR);
+        $jsonResponse = $this->decodeJsonResponse($client);
 
         self::assertResponseIsSuccessful();
         self::assertEquals('f25f2772', $jsonResponse['value']);
+    }
+
+    /**
+     * @param KernelBrowser $client
+     * @return mixed
+     * @throws \JsonException
+     */
+    private function decodeJsonResponse(KernelBrowser $client): mixed
+    {
+        return json_decode($client->getResponse()->getContent(), true, 512, JSON_THROW_ON_ERROR);
     }
 }

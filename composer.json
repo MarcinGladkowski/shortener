@@ -1,6 +1,7 @@
 {
     "require": {
         "php": ">=8.4",
+        "ext-pdo": "*",
         "symfony/framework-bundle": "^7.2",
         "symfony/runtime": "^7.2",
         "symfony/yaml": "^7.2"

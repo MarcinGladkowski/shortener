@@ -25,6 +25,7 @@ final class ShortenerController
         }
 
         $shortenedValue = new Shortener(new Rot13HashedShortenedAlgorithm())->generate($value);
+        // store in an SQL lite database, how possible is collision?
 
         return new JsonResponse(['value' => $shortenedValue]);
     }
