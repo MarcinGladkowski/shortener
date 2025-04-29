@@ -1,5 +1,3 @@
-### Here’s a coding challenge suitable for a **senior PHP developer**, designed to test real-world problem-solving, OOP principles, system design, and performance thinking:
-
 ---
 
 ### 🧠 **Challenge: Build a Scalable URL Shortener API**
